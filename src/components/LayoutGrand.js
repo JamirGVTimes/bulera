@@ -44,6 +44,11 @@ const LayoutY = () => {
                      Guild
                     </Link>
                 </Menu.Item>
+                <Menu.Item key="6">
+                    <Link to="/online-application">
+                     Apply Online
+                    </Link>
+                </Menu.Item>
             </Menu>
             </Header>
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
@@ -58,7 +63,7 @@ const LayoutY = () => {
             </div>
        
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Bulera Core PTC © 2022 Created by Bgimahood</Footer>
+            <Footer style={{ textAlign: 'center' }}>Bulera Core PTC © 2022 | Powered by Bgimahood</Footer>
         </Layout>
         </>
     );
