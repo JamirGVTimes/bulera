@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { 
     Divider, 
     Col, 
@@ -9,9 +10,12 @@ import {
     Button,
     Tag,
     Image,
+    Steps,
+    Modal,
+    Anchor,
     Typography
  } from "antd";
-import React from "react";
+
 import {
     SettingOutlined,
     TwitterOutlined, 
@@ -24,114 +28,134 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import dpo from "../../../Pics/Notification_Ion.svg";
-const {Title, Paragraph, Text} = Typography;
-const Admin = () => {
-    return(
-        <div style={{textAlign:'center'}}>
-        <Title level={3}>
-            Admin Page
-        </Title>
-        <Divider/>
-        
-            <Row gutter={16}>
-            <Col span={8} style={{minWidth:'350px'}}>
-                          
-                <Badge.Ribbon text="DPO">
-                 <Card size="small" title="DEPUTY PRINCIPAL OUTREACH" hoverable> 
+import { render } from "@testing-library/react";
+const { Title, Paragraph, Text } = Typography;
+const { Step } = Steps;
+const { Link } = Anchor;
+const Admin = (props) => {
+    
+const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    };
+    console.log(props);
+    const rendertopAdmin = props.topAdmin.map((profiles1) => {
+        return (
+            <div style={{width:"250px",display:"inline-table", margin:"5px", textAlign:"center",color:"#808080"}}>
+                    <Badge.Ribbon text={profiles1.title}>
+                 <Card size="small" title=" " style={{padding:"0"}} hoverable> 
                         <img 
-                        width={200}
+                        style={{width: "121.665px"}}
                         src={dpo}
                         />
+                        <hr style={{
+                            height: "2px",
+                            margin: "0",
+                            border: "none",
+                            backgroundColor:"black"
+                        }}
+                        /><hr style={{
+                            height: "2px",
+                            margin: "0",
+                            border: "none",
+                            backgroundColor:"yellow"
+                        }}
+                        />
+                        <hr style={{
+                            height: "2px",
+                            margin: "0",
+                            border: "none",
+                            backgroundColor:"red"
+                        }}
+                            
+                        />
                         <Paragraph>
-                            <Typography 
-                                style={{
-                                    backgroundColor:'rgb(0, 21, 41)',
-                                    color:'#fff',
-                                    padding:'5px',
-                                    fontSize:'14px',
-                                    borderRadius:'4px'
-                                    }}> 
-                                Ms. Khaitsa Magaret 
-                                
+                            <Button
+                                type="primary"
+                                style={{borderRadius:"0 0 7px 7px", backgroundColor:"#494644"}}
+                            >
+                                {profiles1.name}
+                            </Button>
+                            <br/>
+                            <Typography style={{
+                                color: "#808080", padding:"5px"
+                            }}> 
+                                {profiles1.titleFull}
                             </Typography>
-                            <Text style={{color:'grey'}}> Since 2018, She has been a great administrator ... </Text>
-                            <Rate defaultValue={3}/> <br/>
-                                <Button type="primary">
-                                    View more about ...
+                                <Button type="primary" size="small" style={{borderRadius:"30px"}} onClick={showModal}>
+                                   View Profile
                                 </Button>
                             
+                                <Modal title={profiles1.name} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                <p>{profiles1.joined}</p>
+                                    <p>Some contents...</p>
+                                    <p>Some contents...</p>
+                                </Modal>
                         </Paragraph>
-                            
+                        
                           
                     </Card>
                 
                 </Badge.Ribbon>
-            </Col>
-            <Col span={8} style={{minWidth:'350px'}}>
-                <Badge.Ribbon text="Principal">
-                    <Card title="PRINCIPAL" size="small" hoverable> 
-                            <img 
-                            width={200}
-                            src={dpo}
-                            />
-                        <Paragraph>
-                            <Typography 
-                                style={{
-                                    backgroundColor:'rgb(0, 21, 41)',
-                                    color:'#fff',
-                                    padding:'5px',
-                                    fontSize:'14px',
-                                    borderRadius:'4px'
-                                    }}> 
-                                Mr. Okello Humpreys
-                                
-                            </Typography>
-                            <Text style={{color:'grey'}}> Since 2019, He has been a great Principal ... </Text>
-                            <Rate defaultValue={3}/> <br/>
-                                <Button type="primary">
-                                    View more about ...
-                                </Button>
+            </div>
+        );
+    });
+         return(
+        <>
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                <Col span={3}>
+                    <Row>
+                        <Col span={24} style={{backgroundColor:"#E6E6E6", height:"81px", textAlign:"center"}}>
+                            Kyu Logo
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={24} style={{backgroundColor:"#1890ff", height:"500px", textAlign:"center"}}>
                             
-                        </Paragraph>
-                    </Card>
-                    
-                </Badge.Ribbon>
-            </Col>
-            <Col span={8} style={{minWidth:'350px'}}>
-
-                <Badge.Ribbon text="DPP">
-                    <Card title="DEPUTY PRINCIPAL PRE-SERVICE" size="small" hoverable> 
-                            <img 
-                            width={200}
-                            src={dpo}
-                            />
-                        <Paragraph>
-                            <Typography 
-                                style={{
-                                    backgroundColor:'rgb(0, 21, 41)',
-                                    color:'#fff',
-                                    padding:'5px',
-                                    fontSize:'14px',
-                                    borderRadius:'4px'
-                                    }}> 
-                                Mr. Byaruhanga A. Salvatore
-                                
-                            </Typography>
-                            <Text style={{color:'grey'}}> Since 2021, He has built a great career ... </Text>
-                            <Rate defaultValue={3}/> <br/>
-                                <Button type="primary">
-                                    View more about ...
-                                </Button>
-                            
-                        </Paragraph>
-                        
-                        </Card>
-                    
-                    </Badge.Ribbon>
-            </Col>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={24} style={{backgroundColor:"#fff", height:"81px", textAlign:"center"}}>
+                            Bulera Logo
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={5} >
+                   
+                         <Anchor>
+                            <Link href="#components-anchor-demo-basic" title="Basic demo" />
+                            <Link href="#components-anchor-demo-static" title="Static demo" />
+                            <Link href="#API" title="API">
+                            <Link href="#Anchor-Props" title="Anchor Props" />
+                            <Link href="#Link-Props" title="Link Props" />
+                            </Link>
+                        </Anchor>
+                </Col>
+                <Col span={16}>
+                    <Row gutter={3}>
+                        <Col span={24} style={{backgroundColor:"rgba(0,0,0,0.02)", padding:"20px auto",textAlign:"center"}}>
+                            {rendertopAdmin}
+                        </Col>
+                    </Row>
+                    <Row gutter={3}>
+                        <Col span={24}>
+                        </Col>
+                    </Row>
+                </Col>
             </Row>
         
-        </div>
+        </>
     );
+    
+   
 };
 export default Admin;

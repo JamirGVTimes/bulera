@@ -7,7 +7,7 @@ import {
     Menu, 
     Breadcrumb, 
     Divider,
-    Typography
+   Typography
  } from 'antd';
 const { Paragraph, Title } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -49,15 +49,16 @@ const LayoutY = () => {
                      Apply Online
                     </Link>
                 </Menu.Item>
-            </Menu>
+                </Menu>
+                   
             </Header>
             <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
              
-            <Breadcrumb style={{ margin: '16px 0' }}>
+            {/*<Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>Home</Breadcrumb.Item>
                 <Breadcrumb.Item>Departments</Breadcrumb.Item>
                 <Breadcrumb.Item>ICT</Breadcrumb.Item>
-            </Breadcrumb>
+    </Breadcrumb>*/}
             <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
                    <Outlet />
             </div>
