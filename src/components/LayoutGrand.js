@@ -1,15 +1,10 @@
 import React from "react";
 import { Outlet, Link} from "react-router-dom";
 import "./LayoutStyle.css";
-import bgima from "../Pics/Bgimahood_logo.svg";
 import { 
     Layout, 
-    Menu, 
-    Breadcrumb, 
-    Divider,
-   Typography
+    Menu
  } from 'antd';
-const { Paragraph, Title } = Typography;
 const { Header, Content, Footer } = Layout;
 
 const LayoutY = () => {
@@ -20,7 +15,7 @@ const LayoutY = () => {
             
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
                 <Menu.Item key="1">
-                    <Link to="/home">   
+                    <Link to="/">   
                       Home 
                     </Link>
                 </Menu.Item>
